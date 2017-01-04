@@ -1,0 +1,28 @@
+{
+    "name": "sitewards/setup-magento2",
+    "description": "Magento 2 Bridge for the Sitewards Setup module",
+    "type": "magento2-module",
+    "license": "MIT",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "sitewards/setup": "dev-master"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Sitewards\\Setup\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "David Manners",
+            "email": "david.manners@sitewards.com"
+        },
+        {
+            "name": "Darko Poposki",
+            "email": "darko.poposki@sitewards.com"
+        }
+    ]
+}
