@@ -24,5 +24,8 @@
             "name": "Darko Poposki",
             "email": "darko.poposki@sitewards.com"
         }
+    ],
+    "bin": [
+        "bin/setup"
     ]
 }

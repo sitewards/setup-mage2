@@ -6,9 +6,10 @@
  * (c) Sitewards GmbH
  */
 
-namespace Sitewards\Setup\Persistence;
+namespace Sitewards\Setup\Repository;
 
 use Sitewards\Setup\Domain\Page;
+use Sitewards\Setup\Domain\PageRepositoryInterface;
 
 class PageRepository implements PageRepositoryInterface
 {
