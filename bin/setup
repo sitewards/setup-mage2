@@ -2,7 +2,12 @@
 <?php
 
 require_once 'vendor/autoload.php';
-require __DIR__ . '/../../app/bootstrap.php';
+
+$projectRootDir = __DIR__ . '/../../../..';
+
+if (file_exists($projectRootDir . '/app/bootstrap.php')) {
+    require $projectRootDir . '/app/bootstrap.php';
+}
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Sitewards\Setup\Command\Page\Dump;

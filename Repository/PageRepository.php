@@ -6,7 +6,7 @@
  * (c) Sitewards GmbH
  */
 
-namespace Sitewards\Setup\Repository;
+namespace Sitewards\SetupMage2\Repository;
 
 use Sitewards\Setup\Domain\Page;
 use Sitewards\Setup\Domain\PageRepositoryInterface;
