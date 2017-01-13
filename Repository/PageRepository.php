@@ -59,6 +59,7 @@ class PageRepository implements PageRepositoryInterface
 
     /**
      * @return Page[]
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function findAll()
     {

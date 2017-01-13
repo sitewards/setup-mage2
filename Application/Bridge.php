@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * This file is part of the Setup package.
+ *
+ * (c) Sitewards GmbH
+ */
+
 namespace Sitewards\SetupMage2\Application;
 
 use Sitewards\Setup\Application\BridgeInterface;
