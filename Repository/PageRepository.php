@@ -8,8 +8,8 @@
 
 namespace Sitewards\SetupMage2\Repository;
 
-use Sitewards\Setup\Domain\Page;
-use Sitewards\Setup\Domain\PageRepositoryInterface;
+use Sitewards\Setup\Domain\Page\Page;
+use Sitewards\Setup\Domain\Page\PageRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 class PageRepository implements PageRepositoryInterface

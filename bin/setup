@@ -10,9 +10,9 @@ if (file_exists($projectRootDir . '/app/bootstrap.php')) {
 }
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use Sitewards\Setup\Command\Page\Dump;
-use Sitewards\Setup\Repository\PageRepository;
-use Sitewards\Setup\Service\Page\Dumper\Dumper;
+use Sitewards\Setup\Command\Page\Export;
+use Sitewards\SetupMage2\Repository\PageRepository;
+use Sitewards\Setup\Service\Page\Exporter;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -35,7 +35,7 @@ $mage2Bridge = new PageRepository(
     $objectManager->get('\Magento\Cms\Api\Data\PageInterfaceFactory')
 );
 
-$dumper = new Dumper(
+$exporter = new Exporter(
     $mage2Bridge,
     $serializer,
     new Filesystem()
@@ -43,7 +43,7 @@ $dumper = new Dumper(
 
 $application = new Application();
 $application->add(
-    new Dump($dumper)
+    new Export($exporter)
 );
 
 $importer = new Importer(
