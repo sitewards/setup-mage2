@@ -2,23 +2,12 @@
 
 namespace Sitewards\SetupMage2\Application;
 
-use Symfony\Component\Console\Application;
-use Symfony\Component\Filesystem\Filesystem;
-
 use Magento\Framework\Console\Cli;
 use Magento\Framework\App\ObjectManager;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\Serializer;
-
-use Sitewards\Setup\Command\Page\Export;
 use Sitewards\SetupMage2\Repository\PageRepository;
-use Sitewards\Setup\Service\Page\Exporter;
-use Sitewards\Setup\Service\Page\Importer;
-use Sitewards\Setup\Command\Page\Import;
 
-class Setup extends Application
+class Setup
 {
     /** @var Cli */
     private $coreCliApp;
@@ -26,25 +15,8 @@ class Setup extends Application
     /** @var ObjectManager */
     private $objectManager;
 
-    /** @var Serializer */
-    private $serializer;
-
-    public function __construct($defaultName = 'Sitewards Setup', $version = '1.0.0')
-    {
-        parent::__construct($defaultName, $version);
-        $this->initSerializer();
+    public function __construct(){
         $this->initMagento();
-        $this->initCommands();
-    }
-
-    private function initSerializer()
-    {
-        AnnotationRegistry::registerAutoloadNamespace(
-            'JMS\Serializer\Annotation',
-            'vendor/jms/serializer/src'
-        );
-
-        $this->serializer = SerializerBuilder::create()->build();
     }
 
     /**
@@ -63,33 +35,14 @@ class Setup extends Application
     }
 
     /**
-     * @throws \LogicException
+     * @return PageRepository
      */
-    private function initCommands()
+    public function getMagento2Bridge()
     {
-        $mage2Bridge = new PageRepository(
+        return new PageRepository(
             $this->objectManager->get('\Magento\Cms\Api\PageRepositoryInterface'),
             $this->objectManager->get('\Magento\Framework\Api\SearchCriteriaBuilder'),
             $this->objectManager->get('\Magento\Cms\Api\Data\PageInterfaceFactory')
-        );
-
-        $exporter = new Exporter(
-            $mage2Bridge,
-            $this->serializer,
-            new Filesystem()
-        );
-
-        $this->add(
-            new Export($exporter)
-        );
-
-        $importer = new Importer(
-            $mage2Bridge,
-            $this->serializer
-        );
-
-        $this->add(
-            new Import($importer)
         );
     }
 }

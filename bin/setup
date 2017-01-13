@@ -4,6 +4,11 @@
 require_once __DIR__.'/../../../../vendor/autoload.php';
 
 use Sitewards\SetupMage2\Application\Setup;
+use Sitewards\Setup\Application;
 
-$application = new Setup();
+$application = new Application(
+    'Sitewards Setup',
+    '1.0.0',
+    (new Setup())->getMagento2Bridge()
+);
 $application->run();
