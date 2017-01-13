@@ -2,12 +2,14 @@
 
 namespace Sitewards\SetupMage2\Application;
 
+use Sitewards\Setup\Application\BridgeInterface;
+
 use Magento\Framework\Console\Cli;
 use Magento\Framework\App\ObjectManager;
 
 use Sitewards\SetupMage2\Repository\PageRepository;
 
-class Setup
+class Bridge implements BridgeInterface
 {
     /** @var Cli */
     private $coreCliApp;
@@ -37,7 +39,7 @@ class Setup
     /**
      * @return PageRepository
      */
-    public function getMagento2Bridge()
+    public function getPageRepository()
     {
         return new PageRepository(
             $this->objectManager->get('\Magento\Cms\Api\PageRepositoryInterface'),
