@@ -9,7 +9,6 @@
 namespace Sitewards\SetupMage2\Application;
 
 use Sitewards\Setup\Application\BridgeInterface;
-use Sitewards\Setup\Domain\Page\PageRepositoryInterface;
 
 use Magento\Framework\Console\Cli;
 use Magento\Framework\App\ObjectManager;
@@ -44,7 +43,7 @@ final class Bridge implements BridgeInterface
     }
 
     /**
-     * @return PageRepositoryInterface
+     * {@inheritdoc}
      */
     public function getPageRepository()
     {
