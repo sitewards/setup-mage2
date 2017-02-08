@@ -51,28 +51,10 @@ final class PageRepository implements PageRepositoryInterface
      * @return PageInterface[]
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function findByIds(array $ids)
+    public function find(array $ids = [])
     {
         $this->setIdFilter($ids);
 
-        return $this->findItems();
-    }
-
-    /**
-     * @return PageInterface[]
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
-    public function findAll()
-    {
-        return $this->findItems();
-    }
-
-    /**
-     * @return PageInterface[]
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
-    private function findItems()
-    {
         /** @var \Magento\Framework\Api\SearchResults $results */
         $results = $this->pageRepository->getList($this->searchCriteria->create());
 
@@ -112,7 +94,7 @@ final class PageRepository implements PageRepositoryInterface
      * @param PageInterface $page
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function import(PageInterface $page)
+    public function save(PageInterface $page)
     {
         try {
             $pageToSave = $this->pageRepository->getById($page->getIdentifier());
