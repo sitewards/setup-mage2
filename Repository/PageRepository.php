@@ -9,10 +9,11 @@
 namespace Sitewards\SetupMage2\Repository;
 
 use Sitewards\Setup\Domain\Page\Page;
+use Sitewards\Setup\Domain\Page\PageInterface;
 use Sitewards\Setup\Domain\Page\PageRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-class PageRepository implements PageRepositoryInterface
+final class PageRepository implements PageRepositoryInterface
 {
     /**
      * @var \Magento\Cms\Api\PageRepositoryInterface
@@ -47,7 +48,7 @@ class PageRepository implements PageRepositoryInterface
     /**
      * @param array $ids
      *
-     * @return Page[]
+     * @return PageInterface[]
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function findByIds(array $ids)
@@ -58,7 +59,7 @@ class PageRepository implements PageRepositoryInterface
     }
 
     /**
-     * @return Page[]
+     * @return PageInterface[]
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function findAll()
@@ -67,7 +68,7 @@ class PageRepository implements PageRepositoryInterface
     }
 
     /**
-     * @return Page[]
+     * @return PageInterface[]
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     private function findItems()
@@ -108,10 +109,10 @@ class PageRepository implements PageRepositoryInterface
     /**
      * Save a given page to the magento page repository
      *
-     * @param Page $page
+     * @param PageInterface $page
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function import(Page $page)
+    public function import(PageInterface $page)
     {
         try {
             $pageToSave = $this->pageRepository->getById($page->getIdentifier());
