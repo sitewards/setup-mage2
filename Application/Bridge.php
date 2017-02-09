@@ -48,9 +48,9 @@ final class Bridge implements BridgeInterface
     public function getPageRepository()
     {
         return new PageRepository(
-            $this->objectManager->get('\Magento\Cms\Api\PageRepositoryInterface'),
-            $this->objectManager->get('\Magento\Framework\Api\SearchCriteriaBuilder'),
-            $this->objectManager->get('\Magento\Cms\Api\Data\PageInterfaceFactory')
+            $this->objectManager->get(\Magento\Cms\Api\PageRepositoryInterface::class),
+            $this->objectManager->get(\Magento\Framework\Api\SearchCriteriaBuilder::class),
+            $this->objectManager->get(\Magento\Cms\Api\Data\PageInterfaceFactory::class)
         );
     }
 }
